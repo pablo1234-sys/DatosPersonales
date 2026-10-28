@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources> <!--En este XML definimos colores que vamos a usar en la aplicación.
+Lo podemos utilizar por ejemplo mediante android:textColor="@color/name"-->
+    <!--A la izquierda de las etiquetas hay un recuadro de color, pulsamos ahí y seleccionamos
+    el color que queramos. Seleccionamos los siguientes
+     para que sea parecido a lo que busca el enunciado-->
+    <color name="rojo_error">#FF0303</color>
+    <color name="morado">#D30FF2</color>
+</resources>

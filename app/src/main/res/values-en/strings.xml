@@ -1,0 +1,63 @@
+<!--Siguiendo las indicaciones de la IA, para tener la opcion
+de otro idioma, tenemos que crear el archivo de las traducciones.
+Lo que hemos hecho ha sido crear un segundo strings.xml destinado al ingles
+Para ello, hemos pulsado sobre res, seleccionado new y luego Android Resource Directory
+En Resource type, seleccionamos values, añadimos el calificador Locale y en idioma
+seleccionamos En (english). Le damos a OK (lo que crea el directorio en cuestion),
+y dentro de values-en, creamos nuestro nuevo string.xml destinado
+a las traducciones.
+-->
+<resources>
+    <!--Aquí escribimos las traducciones inglesas de nuestro string.xml destinado al idioma español.
+    Lo que si tenemos que recalcar es que los identificadores name no van a cambiar,
+    solo cambiamos el contenido de cada string. Yo voy a usar la IA para
+    que me traduzca los contenidos al Inglés.-->
+
+    <!--Cuando cambiemos de idioma, Android cargará los elementos de la lista correspondiente-->
+        <string name="app_name">Personal Details</string>
+
+        <string name="nombre_hint">Enter your name</string>
+        <string name="apellidos_hint">Enter your surnames</string>
+        <string name="edad_hint">Enter your age</string>
+
+        <string name="mostrar">Show details</string>
+        <string name="limpiar">Reset</string>
+
+        <string name="hombre">Male</string>
+        <string name="mujer">Female</string>
+        <string name="hijos">Do you have children?</string>
+
+        <string name="falta_nombre">Name is missing.</string>
+        <string name="falta_apellidos">Surnames are missing.</string>
+        <string name="falta_edad">Age is missing.</string>
+        <string name="edad_invalida">Invalid age.</string>
+
+        <string name="mayor_edad">of legal age</string>
+        <string name="menor_edad">underage</string>
+
+        <string name="hombre_texto">male</string>
+        <string name="mujer_texto">female</string>
+        <string name="genero_no_indicado">gender not specified</string>
+
+        <string name="estado_no_indicado">marital status not specified</string>
+
+        <string name="con_hijos">with children</string>
+        <string name="sin_hijos">without children</string>
+
+        <string name="resumen">%1$s, %2$s, %3$s, %4$s, %5$s and %6$s.</string>
+
+        <string-array name="idiomas">
+            <item>Español</item>
+            <item>English</item>
+        </string-array>
+
+        <string-array name="estados_civiles">
+            <item>Select marital status</item>
+            <item>Single</item>
+            <item>Married</item>
+            <item>Separated</item>
+            <item>Widowed</item>
+            <item>Other</item>
+        </string-array>
+
+</resources>

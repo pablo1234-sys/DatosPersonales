@@ -1,0 +1,150 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<!--
+Para el diseño horizontal de la aplicacion, he creado la carpeta layout-land y dentro he añadido
+otro activity_main.xml, copiando el diseño que ya había hecho en la primera parte de la práctica.
+
+Después he cambiado la orientación del LinearLayout principal a horizontal y  metido dentro 2 LinearLayout verticales,
+permitiendome asi repartir los componentes en 2 columnas.
+
+En cada columna he puesto layout_width=0dp y layout_weight=1 para que las dos ocupen el mismo espacio. Después pongo
+los componentes que ya tenía dentro de cada columna.
+
+Uso los mismos id en ambos diseños para que Java pueda detectar los componentes con findViewById() y así no tener que
+modificar el código para cada caso. Como consecuencia de todo lo que hemos hecho, Android es capaz de cambiar de diseños
+en funcion de si el movil está en horizontal o vertical.
+-->
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:padding="0dp"
+    tools:context=".MainActivity">
+
+    <ScrollView
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:padding="20dp">
+
+
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:orientation="vertical">
+
+                <Spinner
+                    android:id="@+id/spinnerIdioma"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:entries="@array/idiomas" />
+
+                <EditText
+                    android:id="@+id/editNombre"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:autofillHints="personGivenName"
+                    android:ems="10"
+                    android:hint="@string/nombre_hint"
+                    android:inputType="textPersonName|textCapWords" />
+
+                <EditText
+                    android:id="@+id/editApellidos"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:autofillHints="personFamilyName"
+                    android:ems="10"
+                    android:hint="@string/apellidos_hint"
+                    android:inputType="text|textCapWords" />
+
+                <EditText
+                    android:id="@+id/editEdad"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:digits="0123456789"
+                    android:ems="10"
+                    android:hint="@string/edad_hint"
+                    android:inputType="number" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:orientation="vertical">
+
+                <RadioGroup
+                    android:id="@+id/grupoGenero"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+
+
+                    <RadioButton
+                        android:id="@+id/radioHombre"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:checked="false"
+                        android:text="@string/hombre" />
+
+                    <RadioButton
+                        android:id="@+id/radioMujer"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:checked="false"
+                        android:text="@string/mujer" />
+
+                </RadioGroup>
+
+                <Spinner
+                    android:id="@+id/spinnerEstado"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:entries="@array/estados_civiles" />
+
+                <Switch
+                    android:id="@+id/switchHijos"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:checked="false"
+                    android:text="@string/hijos" />
+
+                <TextView
+                    android:id="@+id/textoError"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textColor="@color/rojo_error" />
+
+                <Button
+                    android:id="@+id/botonMostrar"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="@string/mostrar" />
+
+                <Button
+                    android:id="@+id/botonLimpiar"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="@string/limpiar" />
+
+            </LinearLayout>
+
+
+        </LinearLayout>
+    </ScrollView>
+</androidx.constraintlayout.widget.ConstraintLayout>

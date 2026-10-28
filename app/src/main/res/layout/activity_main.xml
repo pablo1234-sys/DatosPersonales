@@ -1,0 +1,188 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--Respecto a esta parte, hemos hecho varias cosas desde la pestaña
+split. En primer lugar hemos arrastrado ScrollView dentro del main. Luego hemos
+ añadido LinearLayout dentro del ScrollView. Luego hemos configurado todos los atributos.
+
+ ConstraintLayout ( o main) es el contenedor de la pantalla. Nos permite colocar componentes mediante restricciones.
+
+ Luego, el ScrollView nos permite desplazarnos verticalmente si nuestro contenido no cabe en la pantalla del movil.
+ Despues lo ponemos de forma que este superpuesto al contenedor padre (parent) enlanzando las restricciones con el main y poniendo padding a 0
+
+ Finalmente, tenemos LinearLayout que contiene los elementos de nuestro formulario.
+ Al usar orientation=vertical colocamos los componentes uno debajo de otro.
+ Por defecto, ocupa todo el ancho disponible (layout_width=math_parent) y ajusta la altura al contenido
+ (layout_height=wrap_content), asi que lo dejamos así.
+ Con el padding=20dp dejamos 20dp de espacio INTERIOR en los cuatros lados para que los componentes
+ que pongamos no queden pegados a los bordes y genere una mala apariencia visual.
+
+ Todo esto lo hemos hecho mediante la ventana split, no escribiendo codigo.
+ -->
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:padding="0dp"
+    tools:context=".MainActivity">
+
+    <ScrollView
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <!--Si nos damos cuenta, no hemos establecido restricciones para cada componente
+        Esto se debe a que todos están dentro de un LinearLayout VERTICAL, que los organiza automaticamente uno debajo de otro.
+        Ademas, tampoco pasa nada si no caben todos en la vista previa, puesto que para eso tenemos el ScrollView.
+        -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:padding="20dp">
+
+
+            <!--Para que el spinner quede como en la practica
+            lo colocamos como primer elemento del LinearLayout.
+            A la hora de establecer varios idiomas, tenemos que asociar la lista XML que creamos
+            con el spinnerIdioma. Para hacerlo mas facil se hace desde la pestaña split.
+            Seleccionamos spinnerIdioma, y en atributos, seleccionamos el campo entries e
+            introducimos @array/idiomas que es el nombre del array que hemos creado en strings.xml
+            En pocas palabras, al hacer eso, establecemos las opciones del spinner-->
+            <Spinner
+                android:id="@+id/spinnerIdioma"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:entries="@array/idiomas" />
+
+            <!--EditText permite que el cliente introduzca texto o números. Con
+            la opcion inputType, podemos modificar el tipo de texto que introduce el cliente
+            -->
+            <EditText
+                android:id="@+id/editNombre"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:autofillHints="personGivenName"
+                android:ems="10"
+                android:hint="@string/nombre_hint"
+                android:inputType="textPersonName|textCapWords" />
+
+            <!--id es el identificador que utilizaremos para conectar el componente con nuestro java
+           Ambos layout ya fueron explicados antes.
+           hint:va a mostrar al cliente un texto de ayuda mientras tenga el campo vacío.
+           inputType="textCapWords": Con esto le decimos al programa que ponga en mayuscula la primera
+            letra de cada palabra
+            -->
+            <EditText
+                android:id="@+id/editApellidos"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:autofillHints="personFamilyName"
+                android:ems="10"
+                android:hint="@string/apellidos_hint"
+                android:inputType="text|textCapWords" />
+
+            <!--
+            inputType="number" : Con esto le decimos al programa que el dato que vamos
+            a meter en este campo es un numero.
+            digits="0123456789": Con esto le decimos al programa que este campo solo acepta esos dígitos-->
+            <EditText
+                android:id="@+id/editEdad"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:digits="0123456789"
+                android:ems="10"
+                android:hint="@string/edad_hint"
+                android:inputType="number" />
+
+            <!--RadioGroup: es un contenedor que agrupa varios RadioButton y nos permite escoger una sola opcion
+            dentro de ese grupo de RadioButton
+            Al ponerle a RadioGroup orientation="horizontal" lo que estamos diciendo
+            es que queremos colocar los botones uno al lado del otro.
+
+            -->
+
+            <RadioGroup
+                android:id="@+id/grupoGenero"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <!--checked="false" lo usamos para indicar que el componente aparece sin seleccionar
+                inicialmente. En nuestro caso, al ser un botón, va a aparecer sin marcar
+                al inicio-->
+                <RadioButton
+                    android:id="@+id/radioHombre"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:checked="false"
+                    android:text="@string/hombre" />
+
+                <RadioButton
+                    android:id="@+id/radioMujer"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:checked="false"
+                    android:text="@string/mujer" />
+
+            </RadioGroup>
+
+            <!--Spinner nos permite mostrar al cliente una lista desplegable-->
+            <Spinner
+                android:id="@+id/spinnerEstado"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:entries="@array/estados_civiles" />
+                <!--Esta ultima linea sale tras asociar al spinner el string-array de los posibles estados civiles definido en el strings.xml
+                Basicamente dice de donde salen los valores que el Spinner puede tomar-->
+            <!--
+            Usaremos Switch, que es un interruptor que me permite elegir
+            entre 2 estados: activado y desactivado. En nuestro caso, el switch nos indica
+            si el cliente tiene hijos (Si se cumple checked="true" significara
+            que tiene hijos. Si se cumple que checked="false" significa que no los tiene)
+
+            IMP:Al poner checked=false hacemos que el interruptor aparezca desactivado inicialmente, que
+            es lo que nos pide la practica-->
+            <Switch
+                android:id="@+id/switchHijos"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:checked="false"
+                android:text="@string/hijos" />
+
+            <!--TextView es un componente que muestra texto al cliente, sin embargo, no le permite escribir
+            en él.
+            textColor lo usamos para decidir el color del texto en cuestion.
+            Para ello, hemos usado el color "rojo_error" que hemos definido en
+            colors.xml
+
+            -->
+            <TextView
+                android:id="@+id/textoError"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textColor="@color/rojo_error" />
+
+            <!--De momento los botones no hacen nada al pulsarlos.
+            Para que hagan algo, los tenemos que conectar con java mediante
+            el metodo setOnClickListener().-->
+            <Button
+                android:id="@+id/botonMostrar"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/mostrar" />
+
+            <Button
+                android:id="@+id/botonLimpiar"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/limpiar" />
+
+        </LinearLayout>
+    </ScrollView>
+</androidx.constraintlayout.widget.ConstraintLayout>

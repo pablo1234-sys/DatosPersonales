@@ -1,0 +1,85 @@
+<resources> <!--Aquí van los strings. Despues desde el archivo XML podremos utilizar ese texto creado mediante @string/name:-->
+    <!--Debemos tener cuidado y no crear strings con el mismo name-->
+    <string name="app_name">Datos Personales</string> <!--Name es el identificador del string que estamos definiendo. El contenido de ese string es lo que va a ver el cliente -->
+    <string name="nombre_hint">Escriba aquí su nombre</string>
+    <string name="apellidos_hint">Escriba aquí sus apellidos</string>
+    <string name="edad_hint">Ingrese su edad</string>
+    <string name="mostrar">Mostrar datos</string>
+    <string name="limpiar">Reiniciar</string>
+    <string name="hombre">Hombre</string>
+    <string name="mujer">Mujer</string>
+    <string name="hijos">¿Tiene hijos?</string>
+
+    <!--Creamos un array con los posibles valores que puede tomar el spinner.
+    Para ello usamos string-array que permite guardar varios textos en una lista.
+    -->
+    <string-array name="estados_civiles">
+        <item>Seleccione estado civil</item>
+        <item>Solter@</item>
+        <item>Casad@</item>
+        <item>Separad@</item>
+        <item>Viud@</item>
+        <item>Otr@</item>
+    </string-array>
+
+    <!--Esto es un parche hecho a posteriori para que la notificacion no ponga "seleccione estado
+    civil " si no escoges ninguna opcion-->
+    <string name="estado_no_indicado">estado civil no indicado</string>
+    <!--Una vez hecho esto, para hacer que el spinner utilice las opciones que acabamos
+    de definir, tenenos que irnos al activity_Main, seleccionar el spinner, y en el atributo entries
+    seleccionar el nombre del array que hemos creado
+    Ademas, la primera opcion sera "Seleccione estado civil", que la uso para representar
+    que todavia el cliente no ha elegido ninguna opcion de ese campo-->
+
+
+    <!--Escribimos las etiquetas que se mostrarán en caso de que
+    se deje algún campo en blanco. Sin embargo todavia nos falta mostrar esta información
+    en el textView que es rojo.
+    Metemos este texto en string.xml en vez de en el codigo java porque la práctica
+    pide expresamente que los textos de la aplicacion generada sean definidos
+    en los recursos
+    Ponemos puntos al final de cada mensaje para que en caso
+    de que el cliente deje varios campos en blanco no se superpongan los
+    mensajes.-->
+
+    <string name="falta_nombre">Falta el nombre.</string>
+    <string name="falta_apellidos">Faltan los apellidos. </string>
+    <string name="falta_edad">Falta la edad.</string>
+
+    <!--Escribimos los siguientes textos que utilizaremos cuando comprobemos la edad-->
+
+    <string name="mayor_edad">mayor de edad</string>
+    <string name="menor_edad">menor de edad</string>
+    <string name="edad_invalida">La edad indicada no es válida</string>
+
+    <!--idem para el caso del genero. Añado de forma extra en caso de que no quiera decir que género tiene el cliente-->
+    <string name="hombre_texto">hombre</string>
+    <string name="mujer_texto">mujer</string>
+    <string name="genero_no_indicado">no indica género</string>
+
+    <!--Idem para el caso de los hijos-->
+    <string name="con_hijos">con hijos</string>
+    <string name="sin_hijos">sin hijos</string>
+
+    <!--Ya hemos obtenido todos los datos que nos hacian falta (nombre
+    apellidos,mayoriaEdad,genero,estadoCivil,hijos)
+    Ahora vamos a construir y mostrar la notificacion
+    Definimos el mensaje (seria mas facil hacerlo concatenando en el MainActivity pero
+    la practica nos obliga a hacerlo aqui).
+    Los marcadores sugeridos por copilot me dicen donde se introduciran las variables. Pongo
+    espacios para que los campos no queden juntos y el punto final para que quede mas formal-->
+
+    <string name="resumen">%1$s , %2$s , %3$s , %4$s , %5$s y %6$s.</string>
+
+    <!--Ahora necesitamos que el cliente pueda elegir entre español e ingles.
+    Tuve que consultar a la IA puesto que no venia en los apuntes ni en los ejercicios resueltos
+    Añadimos entonces los idiomas. Para eso usamos un string-array que nos permita guardar
+    los posibles idiomas.
+    Despues desde la pestaña Split asociamos la lista al spinner-->
+
+    <string-array name="idiomas">
+        <item>Español</item>
+        <item>English</item>
+    </string-array>
+
+</resources>
